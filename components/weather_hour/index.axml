@@ -1,0 +1,9 @@
+<view class='weather-hour-container'>
+  <view><text class='time'>{{time}}时</text></view>
+  <view><text class='text'>{{weather.text}}</text></view>
+  <view><image class='img' src="{{weather.cloudImgURL}}"/></view>
+  <view><text class='temperature'>气温:{{weather.temperature}}℃</text></view>
+  <view><text class='wind-speed'>{{weather.wind_direction}}风</text>
+  <view><text>风速{{weather.wind_speed}}</text></view>
+  </view>
+</view>

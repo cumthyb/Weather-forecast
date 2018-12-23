@@ -1,0 +1,23 @@
+.life-suggestion-container {
+  text-align: center;
+  width: 650rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+.life-suggestion-container .left {
+  margin-right: 20rpx;
+  height: 170rpx;
+}
+.life-suggestion-container .left .thumb {
+  width: 150rpx;
+  height: 150rpx;
+}
+.life-suggestion-container .right {
+  flex: 1;
+  text-align: left;
+  font-size: 26rpx;
+}
+.life-suggestion-container .right .item {
+  display: block;
+}

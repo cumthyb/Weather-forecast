@@ -1,0 +1,80 @@
+<view class="container bg" style="background-image:url({{bgUrl}})">
+  <view class="now-time">{{nowTime}}</view>
+  <view class="now">
+    <view class="location">
+      <text>{{location.longitude}},{{location.latitude}}</text>
+      <image src="{{locationUrl}}" onTap="imgTap"/>
+    </view>
+    <view class="temperature">
+      <text class='num'>{{weather.now.temperature}}</text>
+      <text>℃</text>
+    </view>
+    <view class="cloud">
+     <image class='img' src="{{weather.now.cloudImgURL}}"/>
+      <text class='text'>{{weather.now.text}}</text>
+    </view>
+    <view class="items">
+      <view class="left">
+        <view class="wind">
+          <text>{{weather.now.wind_direction}}风 {{weather.now.wind_scale}}级</text>
+        </view>  
+        <view class="temp-feel">
+          <text>体感温度:{{weather.now.feels_like}}℃</text>
+        </view> 
+         <view class="temp-feel">
+          <text>空气质量:{{weather.air.quality}}</text>
+        </view> 
+      </view>
+      <view class="right">    
+        <view class="humidity">
+          <text>湿度:</text>
+          <text>{{weather.now.humidity}}</text>
+        </view>
+        <view class="visibility">
+          <text>能见度:</text>
+          <text>{{weather.now.visibility}}km</text>
+        </view> 
+         <view class="temp-feel">
+          <text>主要污染物:{{weather.air.primary_pollutant?weather.air.primary_pollutant:"无"}}</text>
+        </view> 
+      </view>
+       </view>
+      <view class="update-time"> 
+        <text>更新时间:</text> 
+        <text>{{weather.update}}</text>
+      </view>
+  </view>
+  <view class="prediction-hour">
+    <text>未来24小时天气</text>
+      <swiper
+        style="height:150px"
+        class="demo-swiper"
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        vertical="{{vertical}}"
+        interval="{{interval}}"
+      >
+        <block a:for="{{weather.hourly}}" a:for-item="item">
+          <swiper-item key="swiper-item-{{index}}">
+            <weather-hour weather="{{item[0]}}"></weather-hour>
+            <weather-hour weather="{{item[1]}}"></weather-hour>
+            <weather-hour weather="{{item[2]}}"></weather-hour>
+          </swiper-item>
+        </block>
+      </swiper>
+
+  </view>
+  <!-- <view class="prediction-day">
+    <text>未来15天天气</text>
+      <scroll-view scroll-y="{{true}}" style="height: 250px;">
+        <weather-day a:for="{{weather.daily}}" a:for-item="item" a:key="{{item.code_day}}" weather="{{item}}"></weather-day>
+      </scroll-view>
+  </view> -->
+  <view class="tips">
+    <text>生活指数</text>
+    <life-suggestion a:for="{{weather.life}}" a:for-item="item" a:key="*this" suggestion="{{item}}"></life-suggestion>
+  </view>
+  <view class="copyright">
+   <text>powered by cumthyb, api by www.seniverse.com</text>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<view class='life-suggestion-container'>
+  <view class="left">
+   <image class="thumb" src="{{thumb}}"></image>
+  </view>
+  <view class="right">
+    <text class='item'>{{suggestion.brief}}</text>
+    <text class='item'>{{suggestion.details}}</text>
+  </view>
+</view>
+

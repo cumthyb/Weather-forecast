@@ -1,0 +1,21 @@
+.weather-day-container {
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+.weather-day-container .left {
+  flex: 155rpx;
+  height: 170rpx;
+}
+.weather-day-container .left .thumb {
+  width: 150rpx;
+  height: 150rpx;
+}
+.weather-day-container .right {
+  flex: 1;
+}
+.weather-day-container .right .item {
+  display: block;
+}

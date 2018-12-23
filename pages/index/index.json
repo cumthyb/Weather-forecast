@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+  	"weather-hour": "/components/weather_hour/index",
+  	"weather-day": "/components/weather_day/index",
+  	"life-suggestion": "/components/life_suggestion/index"
+  }
+}
