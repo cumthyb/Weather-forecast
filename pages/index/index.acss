@@ -12,7 +12,6 @@
   font-size: 32rpx;
   text-align: center;
   color: #ffffff;
-  overflow-x: hidden;
   overflow-y: auto;
 }
 .container .now {

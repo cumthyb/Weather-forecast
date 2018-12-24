@@ -19,6 +19,7 @@ Page({
     cloudImgUrl: config.CLOUD_IMG_URL,
     locationUrl: config.LOCATION_IMG_URL,
     weather: {},
+    position:"",
     indicatorDots: true,
     autoplay: false,
     vertical: false,
@@ -62,10 +63,21 @@ Page({
   getLocation() {
     var that = this;
     dd.getLocation({
+      type:1,
       success(res) {
         that.setData({
-          location: formatLocation(res.longitude, res.latitude)
+          location: formatLocation(res.longitude, res.latitude),
+          position:`${res.country} ${res.province} ${res.city}`
         });
+        commonParam.location=res.city
+        debugger
+        for (const key in res) {
+          if (res.hasOwnProperty(key)) {
+            const element = res[key];
+            console.log(`${key}`,element)
+          }
+        }
+        console.log("位置：",res.longitude)
       },
       fail() {
         dd.alert({ title: "定位失败" });
@@ -74,11 +86,12 @@ Page({
   },
   imgTap(e) {
     let index = Math.trunc(Math.random() * 4 + 1);
-    commonParam.location = cities[index];
+    // commonParam.location = cities[index];
+    // commonParam.location = cities[index];
     this.getLocation();
     this.getWeatherNow();
     this.getWeatherHour();
-    // this.getWeatherDay();
+    // //this.getWeatherDay();
     this.getLifeSuggestion();
     this.getAirQuality()
   },

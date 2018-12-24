@@ -47,7 +47,7 @@ const http = {
           reject(res);
         },
         complete: function(res) {
-          console.log("complete", res);
+          // console.log("complete", res);
         }
       });
     });

@@ -2,7 +2,8 @@
   <view class="now-time">{{nowTime}}</view>
   <view class="now">
     <view class="location">
-      <text>{{location.longitude}},{{location.latitude}}</text>
+      <!-- <text>{{location.longitude}},{{location.latitude}}</text> -->
+      <text>{{location.position}}</text>  
       <image src="{{locationUrl}}" onTap="imgTap"/>
     </view>
     <view class="temperature">
