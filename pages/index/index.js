@@ -70,7 +70,7 @@ Page({
           position:`${res.country} ${res.province} ${res.city}`
         });
         commonParam.location=res.city
-        debugger
+        console.log('commonParam.location=res.city',res.city)
         for (const key in res) {
           if (res.hasOwnProperty(key)) {
             const element = res[key];
@@ -98,9 +98,10 @@ Page({
   getAirQuality(){
     let _this = this;
     let url = config.airQualityUrl;
-    http
+    dd.http
       .get(url, commonParam)
       .then(function(r) {
+        debugger
         let air = r.data.results[0].air.city;
         _this.setData({
           "weather.air": air,
