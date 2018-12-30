@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+  	"qrcode": "mini-ddui-qrcode/es/qrcode/index"
+  }
+}

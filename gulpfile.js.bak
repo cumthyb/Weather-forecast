@@ -1,0 +1,76 @@
+var gulp = require('gulp'),           //获取gulp模块
+    less = require('gulp-less'),     //获取gulp-less插件
+    autoprefixer = require('gulp-autoprefixer'),//前缀补全
+    rename = require("gulp-rename"),
+    gulpSequence = require('gulp-sequence'),
+    plumber = require('gulp-plumber'),
+    del = require('del');//删除文件
+
+
+// gulp.task('del', function (cb) {
+//     del(['dist'], cb);
+// })
+
+gulp.task('less', function () {   //创建gulp任务
+
+    return new Promise(function (resolve, reject) {
+        console.log("less Started");
+        gulp.src('src/**/*.less')   //获取所有less文件路径
+            .pipe(plumber())
+            .pipe(less())
+            .pipe(rename({
+                extname: ".acss"
+            }))　　　　　　   //执行less
+            .pipe(gulp.dest('dist/'));  //输出CSS文件路径
+        resolve();
+    });
+
+});
+
+gulp.task('js', function () {
+    return gulp.src(['src/**/*.js'])
+        // .pipe(babel({
+        //     presets: ['es2015', 'react', 'stage-0']
+        // }))
+        // .pipe(uglify())
+        .pipe(gulp.dest('dist/'))
+})
+
+gulp.task('html', function () {
+    return gulp.src(['src/**/*.html'])
+        .pipe(rename({
+            extname: ".axml"
+        }))
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('image', function () {
+    return gulp.src(['src/**/*.png', 'src/**/*.jpg'])
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('json', function () {
+    return gulp.src(['src/**/*.json'])
+        .pipe(gulp.dest('dist'))
+});
+
+// var cb=function(event) {
+//     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+//   }
+
+gulp.task('watch', function (done) {
+    gulp.watch('src/**/*.less', ['less']);
+    gulp.watch('src/**/*.js', ['js']);
+    gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('src/**/*.png', ['image']);
+    gulp.watch('src/**/*.json', ['json']);
+    done()
+});
+
+gulp.task('default', function () {
+    return new Promise(function (resolve, reject) {
+        gulpSequence('js', 'html', 'image', 'json', 'watch');
+        resolve()
+
+    })
+});
